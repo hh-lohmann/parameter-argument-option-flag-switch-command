@@ -116,7 +116,7 @@ The following tries to harmonize this typical GNU precision with the typical rea
 * Distinguished from [options](#option) by never being prefixed with `--` or `-`
 
 ### value
-* That what is represented by an [argument](#argument) or a an [option](#option)
+* That what is given via an [argument](#argument) or a an [option](#option)
 * Usage as synonym for "argument" should be avoided
 
 
