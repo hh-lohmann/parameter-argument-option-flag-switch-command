@@ -1,0 +1,60 @@
+{
+  "name": "parameter-argument-option-flag-switch-command",
+  "description": "Trying to get terms clear for talking about CLI parameters",
+  "keywords": [],
+  "author": {
+    "name": "hh lohmann",
+    "email": "hh.lohmann@gmail.com"
+  },
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hh-lohmann/parameter-argument-option-flag-switch-command.git"
+  },
+  "bugs": "https://github.com/hh-lohmann/parameter-argument-option-flag-switch-command/issues",
+  "homepage": "https://hh-lohmann.github.io/parameter-argument-option-flag-switch-command",
+  "type": "module",
+  "exports": {
+    "types": "./types.d.ts",
+    "default": "./index.js"
+  },
+  "scripts": {
+    "ci-cd": "node ./ci-cd.js",
+    "test": "node --test ./tests/**/*.test.*"
+  },
+  "devDependencies": {
+    "node-test-bootstrap": "github:hh-lohmann/node-test-bootstrap"
+  },
+  "ci_cd": {
+    "npm": {
+      "filters": [
+        [ "README.md", "/^###### [^\n]+\n/", "" ]
+      ],
+      "remove_onclick": [
+        [ "README.md", "github_readme_demos_switch" ]
+      ],
+      "copy": [
+        "markdown-assets/",
+        "LICENSE.txt",
+        "package.json",
+        "README.md"
+      ]
+    },
+    "release": {
+      "remove_onclick": [
+        "github_readme_demos_switch"
+      ],
+      "copy": [
+        "demos/",
+        "markdown-assets/",
+        "tests/",
+        "_config.yml",
+        ".gitignore",
+        "LICENSE.txt",
+        "package.json",
+        "README.md"
+      ]
+    }
+  }
+}
