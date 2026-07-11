@@ -17,9 +17,9 @@ Trying to get terms clear for talking about CLI parameters
 
 ## Synopsis
 
-Not every CLI needs a thorough disctinction between "argument", "option", "parameter", "flag", "value", "switch", "command" and possibly "executable" and "script" or other labels as e.g. in [POSIX' utility conventions](#posix-utility-conventions), and even the [Bash manual](#bash-features-the-gnu-bash-reference-manual) - classifiable as the forefather of how things in a shell are organized - gives no definitions but rather uses terms interchangeable.
+Not every CLI needs a thorough disctinction between "argument", "option", "parameter", "flag", "value", "switch", "command" and possibly "executable" and "script" or other labels as e.g. in [POSIX' utility conventions](#posix-utility-conventions), and even the [Bash manual](#bash-features-the-gnu-bash-reference-manual) - classifiable as the forefather of how things in a shell are organized - gives no definitions but rather uses terms interchangeable, as also is the case with DOS (cmd) / Windows though there often just "parameter" is used.
 
-Precise as well as concise definitions can be found in the docs for [GNU's glib v2.2.3](#the-gnu-c-library-program-argument-syntax-conventions-glibc-223), [Python's optparse v3.14.6](#python-3146-documentation-optparse-terminology), [Sun's Java Tutorial](#sun-microsystems-the-java-tutorial-posix-conventions-for-command-line-arguments) and [GNU ddrescue v1.29](#gnu-ddrescue-v129-syntax-of-command-line-arguments) - the latter being the most current and most compact, so compact that it can be given here nearly in full (with markup added for code examples):
+Precise as well as concise definitions can be found in the docs for [GNU's glib v2.2.3](#the-gnu-c-library-program-argument-syntax-conventions-glibc-223), [Python's optparse v3.14.6](#python-3146-documentation-optparse-terminology), [Sun's Java Tutorial](#sun-microsystems-the-java-tutorial-posix-conventions-for-command-line-arguments), [Microsoft's .NET](#microsoft-net-command-line-syntax-overview-for-systemcommandline)(slightly specific) and [GNU ddrescue v1.29](#gnu-ddrescue-v129-syntax-of-command-line-arguments) - the latter being the most current and most compact, so compact that it can be given here nearly in full (with markup added for code examples):
 
 > * A command-line argument is an option if it begins with a hyphen (`-`).
 > * Option names are single alphanumeric characters.
@@ -88,13 +88,11 @@ The following tries to harmonize this typical GNU precision with the typical rea
     * Note that this mainly reflects well established standards, not any deeper meaning
 * **long options** are words consisting of letters and hyphens and prefixed by `--` (two hyphens)
   * e.g. `--encoding` or `--file-to-open`
-  * Note that letters may be lower or upper case, but lower case should be preferred to avoid lower / upper confusions
 * **short options** are single characters prefixed by `-` (one hyphen)
   * e.g. `-e`
   * multiple boolean short options (see below) may be combined into one parameter
     * e.g. `-e -x -z` = `-exz`
     * Note that this mainly reflects well established standards, not any deeper meaning
-  * Note that letters may be lower or upper case, but lower case should be preferred to avoid lower / upper confusions
 
 ### flag
 * A boolean [option](#option)
@@ -174,6 +172,10 @@ The following tries to harmonize this typical GNU precision with the typical rea
 ## Details
 
 Not covered here are
+  * Lower vs. upper case options
+    * Having the same letter for two different [short options](#option) via lower vs. upper case may be a last resort if you run out of letters or for historical reasons (or if two different teams claim the same letter for different things) since normally this will lead to repeated uncertainty, e.g. `-x` vs. `-X` for [git clean](#git-git-clean-documentation)
+    * It should be always easier to communicate e.g. "use option `-x`" than "use the lower x option"
+    * Note that Windows by default still does not distinguish upper / lower case at different interfaces (what is not to be confused with accepting only only lower case at some interfaces)
   * Conventional generalized `no-` prefix to set a boolean value to false
     * e.g. `--no-x` / `--no-xy` instead of `--x false` / `--x=false` / `--xy false` /`--xy=false`
     * Became popular with Git, but is syntactic sugar
@@ -196,6 +198,9 @@ Not covered here are
 ### Better Dev: Command line arguments anatomy explained with examples
   * <https://betterdev.blog/command-line-arguments-anatomy-explained/>
 
+### Git: git-clean Documentation
+  * <https://git-scm.com/docs/git-clean>
+
 ### GNU ddrescue v1.29: Syntax of command-line arguments
   * <https://lira.epac.to/DOCS/gddrescue/html/Argument-syntax.html>
 
@@ -208,6 +213,9 @@ Not covered here are
 
 ### MDN: Parameter
   * <https://developer.mozilla.org/en-US/docs/Glossary/Parameter>
+
+### Microsoft .NET: Command-line syntax overview for System.CommandLine
+  * <https://learn.microsoft.com/en-us/dotnet/standard/commandline/syntax>
 
 ### npm Docs: package.json: bin
   * <https://docs.npmjs.com/cli/v11/configuring-npm/package-json#bin>
