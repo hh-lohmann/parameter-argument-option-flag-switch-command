@@ -82,10 +82,12 @@ The following tries to harmonize this typical GNU precision with the typical rea
 * Distinguished from [arguments](#argument) / [commands](#command) by
   * being not-positional
   * being prefixed with `--` or `-`  (long options vs. short options, see below)
+    * NB: classic DOS (cmd) / Windows tools still use `/` instead of `-` / `--` - it might be a plus to accommodate users by accepting also this, though in general typing a `-` is less effort since `/` requires two keys
 * name and value may be separated by a space ` ` or an equal sign `=`
     * i.e. `-x "y"` = `-x="y"`
       * Note that technically correct would be "by a sequence of one or more spaces ` ` that may contain not more than one equal sign `=` since tokens like `-x`, ` `, `=` and `"y"` generally may be surrounded by an arbitrary number of non-semantic spaces since these are reduced to a single arbitrary separator sign in interpretation
     * Note that this mainly reflects well established standards, not any deeper meaning
+    * NB: classic DOS (cmd) / Windows tools still use `:` instead of space / equal sign - it might be a plus to accommodate users by accepting also this
 * **long options** are words consisting of letters and hyphens and prefixed by `--` (two hyphens)
   * e.g. `--encoding` or `--file-to-open`
 * **short options** are single characters prefixed by `-` (one hyphen)
@@ -126,10 +128,18 @@ The following tries to harmonize this typical GNU precision with the typical rea
   ls
 ```
 
+```sh
+  dir
+```
+
 ### Executable with argument
 
 ```sh
   ls *.json
+```
+
+```sh
+  dir *.json
 ```
 
 ### Executable with intrinsic option
@@ -138,10 +148,18 @@ The following tries to harmonize this typical GNU precision with the typical rea
   ls -l
 ```
 
+```sh
+  dir /n
+```
+
 ### Executable with option with argument
 
 ```sh
   ls --sort "extension"
+```
+
+```sh
+  dir /o:e
 ```
 
 ### Executable with command
